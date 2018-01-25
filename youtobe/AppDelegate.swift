@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  youtobe
 //
-//  Created by PAC on 5/3/17.
-//  Copyright © 2017 PAC. All rights reserved.
+//  Created by John Nik on 5/3/17.
+//  Copyright © 2017 johnik703. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let layout = UICollectionViewFlowLayout()
+        let navigationController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
+        window?.rootViewController = navigationController
+        
+        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        
+        //get rid of balck bar underneath navbar
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(),  for: .default)
+        
+        application.statusBarStyle = .lightContent
+        
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 194, green: 31, blue: 31)
+        window?.addSubview(statusBarBackgroundView)
+        window?.addConnstraintsWith(Format: "H:|[v0]|", views: statusBarBackgroundView)
+        window?.addConnstraintsWith(Format: "V:|[v0(20)]", views: statusBarBackgroundView)
+        
         return true
     }
 
